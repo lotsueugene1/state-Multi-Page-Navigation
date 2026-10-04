@@ -3,7 +3,7 @@ import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import Footer from './components/Footer';
 import ProductsPage from './pages/ProductsPage';
-import CartIterm from './components/CartItem';
+import CartItem from './components/CartItem';
 import { useState } from "react";
 
 function App() {
@@ -81,6 +81,7 @@ const totalCart = cart.reduce(
     products={products}
     addToCart={addToCart}
     />
+
  <aside className="cart-panel">
   <h2>Your Cart</h2>
 
@@ -89,7 +90,7 @@ const totalCart = cart.reduce(
   ) : (
     <>
       {cart.map((product, index) => (
-  <CartIterm
+  <CartItem
     key={`${product.id}-${index}`}
     name={product.name}
     price={product.price}
