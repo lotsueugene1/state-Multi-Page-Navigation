@@ -1,6 +1,6 @@
 import './App.css';
 import Header from './components/Header';
-import Hero from './components/Hero';
+import HomePage from './pages/HomePage';
 import Footer from './components/Footer';
 import ProductCard from './components/ProductCard';
 import CartIterm from './components/CartItem';
@@ -73,7 +73,7 @@ const totalCart = cart.reduce(
     <div className="app">
      
       <Header cartCount={cart.length} />
-    <Hero />
+    <HomePage />
 
     <main className="shop-layout">
     <section className="products-section">
