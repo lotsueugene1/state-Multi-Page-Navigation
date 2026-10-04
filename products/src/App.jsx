@@ -2,7 +2,7 @@ import './App.css';
 import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import Footer from './components/Footer';
-import ProductCard from './components/ProductCard';
+import ProductsPage from './pages/ProductsPage';
 import CartIterm from './components/CartItem';
 import { useState } from "react";
 
@@ -76,23 +76,11 @@ const totalCart = cart.reduce(
     <HomePage />
 
     <main className="shop-layout">
-    <section className="products-section">
-    <h2>Featured Products</h2>
-
-    <div className="products-grid">
-      {products.map(product => (
-        <ProductCard
-          key={product.id}
-          name={product.name}
-          price={product.price}
-          image={product.image}
-          description={product.description}
-          addToCart={() => addToCart(product)}
-        />
-      ))}
-    </div>
-  </section>
-
+    
+    <ProductsPage
+    products={products}
+    addToCart={addToCart}
+    />
  <aside className="cart-panel">
   <h2>Your Cart</h2>
 
