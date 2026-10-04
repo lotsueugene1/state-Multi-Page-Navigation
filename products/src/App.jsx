@@ -3,7 +3,7 @@ import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import Footer from './components/Footer';
 import ProductsPage from './pages/ProductsPage';
-import CartItem from './components/CartItem';
+import CartPage from "./pages/CartPage";
 import { useState } from "react";
 
 function App() {
@@ -64,16 +64,13 @@ const removeFromCart = (indexToRemove) => {
   );
 };
 
-const totalCart = cart.reduce(
-  (total, product) => total + product.price,
-  0
-);
 
   return (
     <div className="app">
      
       <Header cartCount={cart.length} />
-    <HomePage />
+
+  <HomePage />
 
     <main className="shop-layout">
     
@@ -82,27 +79,11 @@ const totalCart = cart.reduce(
     addToCart={addToCart}
     />
 
- <aside className="cart-panel">
-  <h2>Your Cart</h2>
-
-  {cart.length === 0 ? (
-    <p className="empty-cart">Your cart is empty.</p>
-  ) : (
-    <>
-      {cart.map((product, index) => (
-  <CartItem
-    key={`${product.id}-${index}`}
-    name={product.name}
-    price={product.price}
-    removeFromCart={() => removeFromCart(index)}
-  />
-))}
-
-      <p>Total: ${totalCart.toFixed(2)}</p>
-    </>
-  )}
-</aside>
-</main>
+    <CartPage
+  products={cart}
+  removeFromCart={removeFromCart}
+    />
+  </main>
 
 <Footer />
     </div>
