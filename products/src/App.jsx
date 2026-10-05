@@ -70,24 +70,31 @@ const removeFromCart = (indexToRemove) => {
       <BrowserRouter>
     <div className="app">
      
-      <Header cartCount={cart.length} />
+  <Header cartCount={cart.length} />
+    <Routes>
+  <Route path="/" element={<HomePage />} />
 
-  <HomePage />
+  <Route
+    path="/products"
+    element={
+      <ProductsPage
+        products={products}
+        addToCart={addToCart}
+      />
+    }
+  />
 
-    <main className="shop-layout">
-    
-    <ProductsPage
-    products={products}
-    addToCart={addToCart}
-    />
-
-    <CartPage
-  products={cart}
-  removeFromCart={removeFromCart}
-    />
-  </main>
-
-<Footer />
+  <Route
+    path="/cart"
+    element={
+      <CartPage
+        products={cart}
+        removeFromCart={removeFromCart}
+      />
+    }
+  />
+  </Routes>
+  <Footer />
     </div>
     </BrowserRouter>
   );
