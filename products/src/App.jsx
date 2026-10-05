@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import ProductsPage from './pages/ProductsPage';
 import CartPage from "./pages/CartPage";
 import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   const products = [
@@ -66,6 +67,7 @@ const removeFromCart = (indexToRemove) => {
 
 
   return (
+      <BrowserRouter>
     <div className="app">
      
       <Header cartCount={cart.length} />
@@ -87,6 +89,7 @@ const removeFromCart = (indexToRemove) => {
 
 <Footer />
     </div>
+    </BrowserRouter>
   );
 }
 
