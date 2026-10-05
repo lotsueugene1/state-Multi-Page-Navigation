@@ -4,7 +4,7 @@ import HomePage from './pages/HomePage';
 import Footer from './components/Footer';
 import ProductsPage from './pages/ProductsPage';
 import CartPage from "./pages/CartPage";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -53,7 +53,13 @@ function App() {
   }
 ];
 
-const [cart, setCart] = useState([])
+const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart')) || [];
+const [cart, setCart] = useState(cartFromLocalStorage)
+
+
+useEffect (() => {
+  localStorage.setItem("cart", JSON.stringify(cart));}, [cart]
+);
 
 const addToCart = (product) => {
   setCart([...cart, product])
